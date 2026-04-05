@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #080B14;
-  --bg-secondary: #0D1120;
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --bg-card-hover: rgba(255, 255, 255, 0.07);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-bright: rgba(129, 140, 248, 0.3);
+  --bg-primary: #06080F;
+  --bg-secondary: #0C0F1D;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-bright: rgba(99, 102, 241, 0.5);
 
-  --indigo: #818CF8;
-  --violet: #A78BFA;
+  --indigo: #6366F1;
+  --indigo-light: #818CF8;
+  --violet: #C084FC;
+  --cyan: #22D3EE;
   --amber: #FBBF24;
-  --green: #34D399;
-  --red: #F87171;
+  --green: #10B981;
+  --red: #F43F5E;
 
-  --text-primary: #F1F5F9;
+  --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
   --text-muted: #475569;
 }
@@ -24,9 +26,7 @@
   --font-body: var(--font-jakarta);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   background: var(--bg-primary);
@@ -35,44 +35,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Background grid texture */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(129, 140, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(129, 140, 248, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
-/* Glow effects */
-.glow-indigo {
-  box-shadow: 0 0 40px rgba(129, 140, 248, 0.15);
-}
-
-.glow-violet {
-  box-shadow: 0 0 40px rgba(167, 139, 250, 0.12);
-}
-
-/* Glass card */
 .glass {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .glass:hover {
   background: var(--bg-card-hover);
-  border-color: var(--border-bright);
+  border-color: rgba(99, 102, 241, 0.25);
 }
 
-/* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #818CF8 0%, #A78BFA 50%, #FBBF24 100%);
+  background: linear-gradient(100deg, #6366F1 0%, #C084FC 50%, #22D3EE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-secondary); }
+.btn-primary {
+  background: linear-gradient(135deg, #6366F1, #C084FC);
+  color: white;
+  font-family: var(--font-syne);
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }

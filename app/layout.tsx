@@ -15,20 +15,13 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Ledger — Know Your Money",
+  title: "Claw Budget v2 — Know Your Money",
   description: "Financial clarity, beautifully simple.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${syne.variable} ${jakarta.variable} h-full`}
-    >
+    <html lang="en" className={`${syne.variable} ${jakarta.variable} h-full`}>
       <body className="min-h-full">{children}</body>
     </html>
   );
