@@ -1,22 +1,12 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { Upload, TrendingDown, TrendingUp, Wallet, LogOut } from 'lucide-react';
+import { useState } from 'react';
 import { signOut } from 'next-auth/react';
 
-function DashboardContent() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+export default function Dashboard() {
   const [dragActive, setDragActive] = useState(false);
-
-  useEffect(() => {
-    if (status === 'unauthenticated') router.push('/auth/signin');
-  }, [status, router]);
-
-  if (status === 'loading' || !session) return <div className="p-8">Loading...</div>;
+  const userName = 'User';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -30,9 +20,9 @@ function DashboardContent() {
             <h1 className="text-2xl font-bold text-slate-900">BudgetV2</h1>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-slate-600">Hi, {session?.user?.name || 'User'}</span>
+            <span className="text-sm text-slate-600">Hi, {userName}</span>
             <button
-              onClick={() => signOut({ redirect: true, callbackUrl: '/' })}
+              onClick={() => signOut({ redirect: true, callbackUrl: '/auth/signin' })}
               className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
             >
               <LogOut className="w-4 h-4" />
@@ -120,5 +110,3 @@ function StatCard({
     </div>
   );
 }
-
-export default dynamic(() => Promise.resolve(DashboardContent), { ssr: false });
